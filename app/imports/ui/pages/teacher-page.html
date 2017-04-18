@@ -1,0 +1,46 @@
+<template name="Teacher_Page">
+  <!--Content needs to be blocked if not logged in as a teacher or TA-->
+  <div class="ui container segment">
+
+    <h1>Class Grades</h1>
+
+    <!--Table with grades-->
+    <table class="ui celled table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Assignment 1</th>
+        <th>Assignment 2</th>
+        <th>Grade</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>John</td>
+        <td>18</td>
+        <td>18</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>Jamie</td>
+        <td>20</td>
+        <td>20</td>
+        <td>20</td>
+      </tr>
+      <tr>
+        <td>Jill</td>
+        <td>10</td>
+        <td>10</td>
+        <td>10</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!--Two buttons that navigate to create a quest and approve quest pages.-->
+    <div class="ui two massive inverted green item menu">
+      <!--In the future create a quest will be hidden from TAs-->
+      <a class="item" href="{{ pathFor 'Create_A_Quest_Page' }}">Create A New Quest</a>
+      <a class="item" href="{{ pathFor 'Approve_Quest_Page' }}">Approve Turned In Quest</a>
+    </div>
+  </div>
+</template>
