@@ -17,6 +17,3 @@ import './student-home-page.js';
 
 import './teacher-page.html';
 import './teacher-page.js';
-
-import './cas-login.html';
-import './cas-login.js';
