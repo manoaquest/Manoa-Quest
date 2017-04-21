@@ -1,0 +1,6 @@
+.user-layout-body {
+  padding-top: 75px;
+  padding-top: 61px;  /* Move body of page below navbar. */
+  background: url("/images/woodtilebg.jpg");
+  margin: 0;
+}

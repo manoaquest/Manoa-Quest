@@ -1,0 +1,21 @@
+<template name="Profile_Page">
+
+  {{#if Template.subscriptionsReady}}
+
+  <!--Really ugly but can't get CSS to work any other way-->
+  <div class="ui container" style="background-image: url('/images/parchmentbg3.png'); padding: 10px 50px 10px 50px; background-size: 100%">
+
+    <div class="ui four column grid">
+      <div class="center aligned column"><h1>{{profile.avatarName}}</h1></div>
+      <div class="center aligned column"><h1>{{profile.firstName}} {{profile.lastName}}</h1></div>
+      <div class="center aligned column"><h1>Current Gold: {{profile.gold}}</h1></div>
+      <div class="center aligned column"><h1>Current Experience: {{profile.experience}}</h1></div>
+    </div>
+
+    <img class="ui small left aligned image" src="/images/whitemage.jpg">
+
+  </div>
+
+  {{/if}}
+
+</template>
