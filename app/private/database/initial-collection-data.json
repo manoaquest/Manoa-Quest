@@ -1,0 +1,28 @@
+{
+  "comment": "Initial contents for the Manoa Quest database. For development purposes only.",
+  "collections": [
+    {
+      "name": "ProfileCollection",
+      "contents": [
+        {
+          "firstName": "Jane",
+          "lastName": "Doe",
+          "username": "eyasaka",
+          "avatarName": "Aviana",
+          "picture": "/images/whitemage.jpg",
+          "gold": 300,
+          "experience": 100000
+        },
+        {
+          "firstName": "Kirk",
+          "lastName": "Wilson",
+          "username": "kirk6",
+          "avatarName": "Kerk",
+          "picture": "/images/whitemage.jpg",
+          "gold": 30,
+          "experience": 100
+        }
+      ]
+    }
+  ]
+}

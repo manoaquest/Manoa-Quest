@@ -12,7 +12,6 @@ Template.Cas_Login.events({
   'click .cas-logout': function casLogout(event) {
     event.preventDefault();
     Meteor.logout();
-    console.log("User Logged Out");
     return false;
   },
 
