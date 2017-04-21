@@ -8,10 +8,6 @@ Template.Landing_Page.onCreated(function onCreated() {
 });
 
 Template.Landing_Page.events({
-  /*'click .sign-in-button': function(event) {
-    event.preventDefault();
-    FlowRouter.go('Student_Home_Page');
-  },*/
   /**
    * Handle the click on the logout link.
    * @param event The click event.
