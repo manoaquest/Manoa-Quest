@@ -2,36 +2,22 @@
 /* eslint-env mocha */
 
 import { Profiles } from '/imports/api/profile/ProfileCollection';
-// import { Interests } from '/imports/api/interest/InterestCollection';
 import { Meteor } from 'meteor/meteor';
 import { expect } from 'chai';
 import { removeAllEntities } from '/imports/api/base/BaseUtilities';
 
 if (Meteor.isServer) {
   describe('ProfileCollection', function testSuite() {
-    // const interestName = 'Software Engineering';
-    // const interestDescription = 'Tools for software development';
-    const firstName = 'Philip';
-    const lastName = 'Johnson';
-    const username = 'johnson';
-    const avatarName = 'professor';
-    // const bio = 'I have been a professor of computer science at UH since 1990.';
-    // const interests = [interestName];
-    const picture = 'http://philipmjohnson.org/headshot.jpg';
+    const firstName = 'Kirk';
+    const lastName = 'Wilson';
+    const username = 'kirk6';
+    const avatarName = 'Kerk';
+    const picture = 'images/whitemage.jpg';
     const gold = 30;
     const experience = 30;
-    /*
-    const title = 'Professor Computer Science';
-    const github = 'http://github.com/philipjohnson';
-    const facebook = 'http://github.com/philipjohnson';
-    const instagram = 'http://github.com/philipjohnson';
-    const defineObject = { firstName, lastName, username, bio, interests, picture, title, github, facebook, instagram };
-    */
     const defineObject = { firstName, lastName, username, avatarName, picture, gold, experience };
     before(function setup() {
       removeAllEntities();
-      // Define a sample interest.
-      // Interests.define({ name: interestName, description: interestDescription });
     });
 
     after(function teardown() {
@@ -47,15 +33,9 @@ if (Meteor.isServer) {
       expect(doc.lastName).to.equal(lastName);
       expect(doc.username).to.equal(username);
       expect(doc.avatarName).to.equal(avatarName);
-      // expect(doc.bio).to.equal(bio);
-      // expect(doc.interests[0]).to.equal(interestName);
       expect(doc.picture).to.equal(picture);
       expect(doc.gold).to.equal(gold);
       expect(doc.experience).to.equal(experience);
-      // expect(doc.title).to.equal(title);
-      // expect(doc.github).to.equal(github);
-      // expect(doc.facebook).to.equal(facebook);
-      // expect(doc.instagram).to.equal(instagram);
       // Check that multiple definitions with the same email address fail
       expect(function foo() { Profiles.define(defineObject); }).to.throw(Error);
       // Check that we can dump and restore a Profile.

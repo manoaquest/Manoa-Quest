@@ -1,6 +1,5 @@
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import BaseCollection from '/imports/api/base/BaseCollection';
-// import { Interests } from '/imports/api/interest/InterestCollection';
 import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
 
@@ -26,16 +25,6 @@ class ProfileCollection extends BaseCollection {
       picture: { type: SimpleSchema.RegEx.Url, optional: true },
       gold: { type: Number, optional: true },
       experience: { type: Number, optional: true },
-      // From Bowfolio
-      /*
-      bio: { type: String, optional: true },
-      interests: { type: [String], optional: true },
-      title: { type: String, optional: true },
-      picture: { type: SimpleSchema.RegEx.Url, optional: true },
-      github: { type: SimpleSchema.RegEx.Url, optional: true },
-      facebook: { type: SimpleSchema.RegEx.Url, optional: true },
-      instagram: { type: SimpleSchema.RegEx.Url, optional: true },
-      */
     }));
   }
 
@@ -46,8 +35,8 @@ class ProfileCollection extends BaseCollection {
    *                   lastName: 'Johnson',
    *                   avatarName: 'johnson',
    *                   picture: 'http://philipmjohnson.org/headshot.jpg',
-   *                   gold: '30',
-   *                   experience: '100', });
+   *                   gold: 30,
+   *                   experience: 100, });
    * @param { Object } description Object with required key username.
    * Remaining keys are optional.
    * Username must be unique for all users. It should be the UH email account.
@@ -70,24 +59,6 @@ class ProfileCollection extends BaseCollection {
     if (this.find({ username }).count() > 0) {
       throw new Meteor.Error(`${username} is previously defined in another Profile`);
     }
-    // Code from Bowfolio
-    /*
-     define({ firstName = '', lastName = '', username, bio = '', interests, picture = '', title = '', github = '',
-     facebook = '', instagram = '' }) {
-     // make sure required fields are OK.
-     const checkPattern = { firstName: String, lastName: String, username: String, bio: String, picture: String,
-     title: String };
-     check({ firstName, lastName, username, bio, picture, title }, checkPattern);
-
-     if (this.find({ username }).count() > 0) {
-     throw new Meteor.Error(`${username} is previously defined in another Profile`);
-     }
-
-    // Throw an error if any of the passed Interest names are not defined.
-    Interests.assertNames(interests);
-    return this._collection.insert({ firstName, lastName, username, bio, interests, picture, title, github,
-      facebook, instagram });
-    */
     return this._collection.insert({ firstName, lastName, username, avatarName, picture, gold, experience });
   }
 
@@ -108,23 +79,6 @@ class ProfileCollection extends BaseCollection {
     return { firstName, lastName, username, avatarName, picture, gold, experience };
   }
 }
-  // Code from Bowfoilo
-  /*
-  dumpOne(docID) {
-    const doc = this.findDoc(docID);
-    const firstName = doc.firstName;
-    const lastName = doc.lastName;
-    const username = doc.username;
-    const bio = doc.bio;
-    const interests = doc.interests;
-    const picture = doc.picture;
-    const title = doc.title;
-    const github = doc.github;
-    const facebook = doc.facebook;
-    const instagram = doc.instagram;
-    return { firstName, lastName, username, bio, interests, picture, title, github, facebook, instagram };
-  }
-  */
 
 /**
  * Provides the singleton instance of this class to all other entities.
