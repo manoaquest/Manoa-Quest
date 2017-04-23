@@ -23,7 +23,7 @@ FlowRouter.route('/approve-quest', {
 FlowRouter.route('/create-quest', {
   name: 'Create_A_Quest_Page',
   action() {
-    BlazeLayout.render('App_Body', { main: 'Create_A_Quest_Page' });
+    BlazeLayout.render('App_Body', { main: 'Create_Quest_Data_Page' });
   },
 });
 
