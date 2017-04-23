@@ -9,14 +9,14 @@ const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
 
-Template.Create_Quest_Data_Page.onCreated(function onCreated() {
+Template.Create_A_Quest_Page.onCreated(function onCreated() {
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
   this.context = QuestDataSchema.namedContext('Create_QuestData_Page');
 });
 
-Template.Create_Quest_Data_Page.helpers({
+Template.Create_A_Quest_Page.helpers({
   successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
   },
@@ -34,7 +34,7 @@ Template.Create_Quest_Data_Page.helpers({
 });
 
 
-Template.Create_Quest_Data_Page.events({
+Template.Create_A_Quest_Page.events({
   'submit .quest-data-form'(event, instance) {
     event.preventDefault();
     // Get name (text field)
