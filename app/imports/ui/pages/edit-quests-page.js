@@ -9,14 +9,20 @@ const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
 
-Template.Create_A_Quest_Page.onCreated(function onCreated() {
+Template.Edit_Quest_Page.onCreated(function onCreated() {
+  this.subscribe('QuestData');
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
-  this.context = QuestDataSchema.namedContext('Create_QuestData_Page');
+  this.context = QuestDataSchema.namedContext('Edit_QuestData_Page');
 });
 
-Template.Create_A_Quest_Page.helpers({
+Template.Edit_Quest_Page.helpers({
+  questDataField(fieldName) {
+    const questData = QuestData.findOne(FlowRouter.getParam('_id'));
+    // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
+    return questData && questData[fieldName];
+  },
   successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
   },
@@ -26,15 +32,9 @@ Template.Create_A_Quest_Page.helpers({
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
-  fieldError(fieldName) {
-    const invalidKeys = Template.instance().context.invalidKeys();
-    const errorObject = _.find(invalidKeys, (keyObj) => keyObj.name === fieldName);
-    return errorObject && Template.instance().context.keyErrorMessage(errorObject.name);
-  },
 });
 
-
-Template.Create_A_Quest_Page.events({
+Template.Edit_Quest_Page.events({
   'submit .quest-data-form'(event, instance) {
     event.preventDefault();
     // Get name (text field)
@@ -48,15 +48,15 @@ Template.Create_A_Quest_Page.events({
     // Get message (text area).
     const message = event.target.Message.value;
 
-    const newQuest = { name, exp, resubmissions, due, message};
+    const updatedQuestData = { name, exp, resubmissions, due, message};
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newQuest reflects what will be inserted.
-    QuestDataSchema.clean(newQuest);
+    QuestDataSchema.clean(updatedQuestData);
     // Determine validity.
-    instance.context.validate(newQuest);
+    instance.context.validate(updatedQuestData);
     if (instance.context.isValid()) {
-      const id = QuestData.insert(newQuest);
+      const id = QuestData.update(FlowRouter.getParam('_id'), { $set: updatedQuestData });
       instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();
