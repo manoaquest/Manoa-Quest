@@ -1,40 +1,24 @@
-<template name="Create_A_Quest_Page">
-  <div id="container">
-    <span class="input">
-      <input type="text" class="input__field" id="input-1" />
-      <label for="input-1" class="input__label">
-        <span class="input__label-content">Quest Name</span>
-    </label>
-    </span>
+<template name="Create_Quest_Data_Page">
 
-    <span class="input">
-      <input type="text" class="input__field" id="input-2" />
-      <label for="input-2" class="input__label">
-        <span class="input__label-content">Exp</span>
-      </label>
-    </span>
+  <div style="margin-top: 20px" class="ui container">
 
-    <span class="input">
-      <input type="text" class="input__field" id="input-3" />
-      <label for="input-3" class="input__label">
-        <span class="input__label-content">Number of Resubmissions</span>
-      </label>
-    </span>
+    <form class="ui form quest-data-form  {{ successClass }} {{ errorClass }}">
+      <h4 class="ui dividing header">Quest Data</h4>
 
-    <span class="input">
-      <input type="text" class="input__field" id="input-4" />
-      <label for="input-4" class="input__label">
-        <span class="input__label-content">Due</span>
-      </label>
-    </span>
+      {{> Text_Form_Control label="Name" required=true errorMessage=(fieldError "quest name")}}
+      {{> Text_Form_Control label="Exp" required=true errorMessage=(fieldError "exp")}}
+      {{> Text_Form_Control label="Resubmissions" required=true errorMessage=(fieldError "resubmissions")}}
+      {{> Text_Form_Control label="Due" required=true errorMessage=(fieldError "due date")}}
+      {{> Text_Form_Control label="Message" required=true errorMessage=(fieldError "message")}}
 
-    <span class="input message">
-      <textarea class="input__field" id="input-5"></textarea>
-      <label for="input-5" class="input__label">
-        <span class="input__label-content">Message</span>
-      </label>
-    </span>
+      <button class="ui primary button" type="submit">Create Epic Quest</button>
 
-    <button id="send-button" type="button">Create Epic Quest</button>
+      {{#if displaySuccessMessage}}
+      <div class="ui success message">
+        <p>To update this entry, go to  <a href="/questdata/{{ displaySuccessMessage }}">/questdata/{{ displaySuccessMessage }}</a></p>
+      </div>
+      {{/if}}
+    </form>
+
   </div>
 </template>
