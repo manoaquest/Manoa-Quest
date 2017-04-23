@@ -9,6 +9,9 @@ import './approve-quest-page.js';
 import './create-a-quest-page.html';
 import './create-a-quest-page.js';
 
+import './edit-quests-page.html';
+import './edit-quests-page.js';
+
 import './landing-page.html';
 import './landing-page.js';
 

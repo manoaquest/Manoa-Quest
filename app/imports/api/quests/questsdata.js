@@ -10,30 +10,24 @@ export const QuestData = new Mongo.Collection('QuestData');
  */
 export const QuestDataSchema = new SimpleSchema({
   name: {
-    label: 'Name',
+    label: 'Quest Name',
     type: String,
   },
-  bio: {
-    label: 'Bio',
-    type: String,
-    optional: true,
-    defaultValue: '',
-  },
-  hobbies: {
-    label: 'Hobbies',
-    type: [String],
-  },
-  level: {
-    label: 'Level',
+  exp: {
+    label: 'Exp',
     type: String,
   },
-  gpa: {
-    label: 'GPA',
+  resubmissions: {
+    label: 'Number of Resubmissions',
     type: String,
   },
-  majors: {
-    label: 'Majors',
-    type: [String],
+  due: {
+    label: 'Due Date',
+    type: String,
+  },
+  message: {
+    label: 'Message',
+    type: String,
   },
 });
 

@@ -1,24 +1,26 @@
-<template name="Create_A_Quest_Page">
+<template name="Edit_Quest_Page">
 
+  {{#if Template.subscriptionsReady}}
   <div style="margin-top: 20px" class="ui container">
 
-    <form class="ui form quest-data-form  {{ successClass }} {{ errorClass }}">
-      <h4 class="ui dividing header">Quest Data</h4>
+    <form class="ui form quest-data-form {{ successClass }} {{ errorClass }}">
+      <h4 class="ui dividing header">Edit Student Data</h4>
 
+      
       {{> Text_Form_Control label="Name" required=true errorMessage=(fieldError "quest name")}}
       {{> Text_Form_Control label="Exp" required=true errorMessage=(fieldError "exp")}}
       {{> Text_Form_Control label="Resubmissions" required=true errorMessage=(fieldError "resubmissions")}}
       {{> Text_Form_Control label="Due" required=true errorMessage=(fieldError "due date")}}
       {{> Text_Form_Control label="Message" required=true errorMessage=(fieldError "message")}}
 
-      <button class="ui primary button" type="submit">Create Epic Quest</button>
-
+      <button class="ui primary button" type="submit">Update</button>
       {{#if displaySuccessMessage}}
       <div class="ui success message">
-        <p>To update this entry, go to  <a href="/quests/{{ displaySuccessMessage }}">/quests/{{ displaySuccessMessage }}</a></p>
+        <p>Student data successfully updated.</p>
       </div>
       {{/if}}
     </form>
 
   </div>
+  {{/if}}
 </template>
