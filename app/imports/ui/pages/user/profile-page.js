@@ -8,6 +8,7 @@ const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
 Template.Profile_Page.onCreated(function onCreated() {
+  console.log("profile page");
   this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
@@ -16,58 +17,19 @@ Template.Profile_Page.onCreated(function onCreated() {
 });
 
 Template.Profile_Page.helpers({
-  successClass() {
-    return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
-  },
-  displaySuccessMessage() {
-    return Template.instance().messageFlags.get(displaySuccessMessage);
-  },
-  errorClass() {
-    return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
-  },
-  fieldError(fieldName) {
-    const invalidKeys = Template.instance().context.invalidKeys();
-    const errorObject = _.find(invalidKeys, (keyObj) => keyObj.name === fieldName);
-    return errorObject && Template.instance().context.keyErrorMessage(errorObject.name);
-  },
-  profile() {
-    return Profiles.findDoc(FlowRouter.getParam('username'));
+  roleCheck(){
+    const profileData = Profiles.findDoc(FlowRouter.getParam('username'));
+    console.log("Profile Data: " + profileData.role);
+    if (profileData.role == 'student') {
+      return 'Student_Profile';
+    }
+    else if(profileData.role == 'prof'){
+      return 'Teacher_Profile';
+    }
   },
 });
 
 
 Template.Profile_Page.events({
-  'submit .profile-data-form'(event, instance) {
-    event.preventDefault();
-    const firstName = event.target.First.value;
-    const lastName = event.target.Last.value;
-    const avatarName = event.target.AvatarName.value;
-    const username = FlowRouter.getParam('username'); // schema requires username.
-    const picture = event.target.Picture.value;
-    /*
-    const gold = event.target.Gold.value;
-    const experience = event.target.Experience.value;
-    */
-
-    // const updatedProfileData = { firstName, lastName, avatarName, picture, gold, experience, username };
-    const updatedProfileData = { firstName, lastName, avatarName, picture, username };
-
-    // Clear out any old validation errors.
-    instance.context.resetValidation();
-    // Invoke clean so that updatedProfileData reflects what will be inserted.
-    Profiles.getSchema().clean(updatedProfileData);
-    // Determine validity.
-    instance.context.validate(updatedProfileData);
-
-    if (instance.context.isValid()) {
-      const docID = Profiles.findDoc(FlowRouter.getParam('username'))._id;
-      const id = Profiles.update(docID, { $set: updatedProfileData });
-      instance.messageFlags.set(displaySuccessMessage, id);
-      instance.messageFlags.set(displayErrorMessages, false);
-    } else {
-      instance.messageFlags.set(displaySuccessMessage, false);
-      instance.messageFlags.set(displayErrorMessages, true);
-    }
-  },
 });
 

@@ -25,6 +25,7 @@ class ProfileCollection extends BaseCollection {
       picture: { type: SimpleSchema.RegEx.Url, optional: true },
       gold: { type: Number, optional: true },
       experience: { type: Number, optional: true },
+      role: { type: String, optional: true},
     }));
   }
 
@@ -36,7 +37,8 @@ class ProfileCollection extends BaseCollection {
    *                   avatarName: 'johnson',
    *                   picture: 'http://philipmjohnson.org/headshot.jpg',
    *                   gold: 30,
-   *                   experience: 100, });
+   *                   experience: 100,
+   *                   role: prof, });
    * @param { Object } description Object with required key username.
    * Remaining keys are optional.
    * Username must be unique for all users. It should be the UH email account.
@@ -45,7 +47,7 @@ class ProfileCollection extends BaseCollection {
    * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
    * @returns The newly created docID.
    */
-  define({ firstName = '', lastName = '', username, avatarName = '', picture = '', gold = 0, experience = 0 }) {
+  define({ firstName = '', lastName = '', username, avatarName = '', picture = '', gold = 0, experience = 0, role=''}) {
     // make sure required fields are OK.
     const checkPattern = { firstName: String,
       lastName: String,
@@ -53,13 +55,14 @@ class ProfileCollection extends BaseCollection {
       avatarName: String,
       picture: String,
       gold: Number,
-      experience: Number };
-    check({ firstName, lastName, username, avatarName, picture, gold, experience }, checkPattern);
+      experience: Number,
+      role: String};
+    check({ firstName, lastName, username, avatarName, picture, gold, experience, role }, checkPattern);
 
     if (this.find({ username }).count() > 0) {
       throw new Meteor.Error(`${username} is previously defined in another Profile`);
     }
-    return this._collection.insert({ firstName, lastName, username, avatarName, picture, gold, experience });
+    return this._collection.insert({ firstName, lastName, username, avatarName, picture, gold, experience, role });
   }
 
   /**
@@ -76,7 +79,8 @@ class ProfileCollection extends BaseCollection {
     const picture = doc.picture;
     const gold = doc.gold;
     const experience = doc.experience;
-    return { firstName, lastName, username, avatarName, picture, gold, experience };
+    const role = doc.role;
+    return { firstName, lastName, username, avatarName, picture, gold, experience, role };
   }
 }
 

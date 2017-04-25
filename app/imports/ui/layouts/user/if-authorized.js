@@ -22,6 +22,7 @@ Template.If_Authorized.helpers({
       // console.log('isAuthorized', 'not logged in');
       return false;
     }
+    console.log("if-authorized");
 
     // Check that the current user is accessing a page in their area.
     const routeUserName = FlowRouter.getParam('username');

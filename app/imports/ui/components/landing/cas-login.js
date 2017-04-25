@@ -28,6 +28,7 @@ Template.Cas_Login.events({
       }
     };
     Meteor.loginWithCas(callback);
+    console.log("cas-login-button-click");
     return false;
   },
 });

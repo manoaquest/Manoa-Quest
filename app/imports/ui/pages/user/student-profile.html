@@ -1,0 +1,62 @@
+<template name="Student_Profile">
+
+  {{#if Template.subscriptionsReady}}
+
+  <!--Really ugly but can't get CSS to work any other way-->
+  <div class="ui container" style="background-image: url('/images/parchmentbg3.png'); padding: 10px 50px 10px 50px; background-size: 100%">
+
+    <div class="ui four column grid">
+      <div class="center aligned column"><h1>Avatar Name: </h1>{{profile.avatarName}}</div>
+      <div class="center aligned column"><h1>Your Name: </h1>{{profile.firstName}} {{profile.lastName}}</div>
+      <div class="center aligned column"><h1>Current Gold: </h1>{{profile.gold}}</div>
+      <div class="center aligned column"><h1>Current Experience: </h1>{{profile.experience}}</div>
+    </div>
+
+
+    <div class="ui small image">
+
+      <div class="ui basic segment">
+        <h1>Profile image:</h1>
+      </div>
+
+      <img src="{{profile.picture}}">
+    </div>
+
+
+  </div>
+
+  <!--Edit profile-->
+  <div class="ui container" style="background-image: url('/images/parchmentbg3.png'); padding: 10px 50px 10px 50px; background-size: 100%">
+
+    <div class="ui dividing header">
+      Edit Profile
+    </div>
+
+    <form class="ui equal width form profile-data-form {{ successClass }} {{ errorClass }}">
+
+      <div class="fields">
+        {{> Text_Form_Control label="First" placeholder="Philip" value=profile.firstName errorMessage=(fieldError "firstName")}}
+        {{> Text_Form_Control label="Last" placeholder="Johnson" value=profile.lastName errorMessage=(fieldError "lastName")}}
+        {{> Text_Form_Control label="AvatarName" placeholder="Johnson" value=profile.avatarName errorMessage=(fieldError "avatarName")}}
+        {{> Text_Form_Control label="Picture" placeholder="Johnson" value=profile.picture errorMessage=(fieldError "picture")}}
+        <!--
+        {{> Text_Form_Control label="Gold" placeholder="Johnson" value=profile.gold errorMessage=(fieldError "gold")}}
+        {{> Text_Form_Control label="Experience" placeholder="Johnson" value=profile.experience errorMessage=(fieldError "experience")}}
+        -->
+      </div>
+
+      <button class="ui primary button" type="submit">Submit</button>
+      {{#if displaySuccessMessage}}
+      <div class="ui success message">
+        <p>Profile data successfully updated.</p>
+      </div>
+      {{/if}}
+
+    </form><!--form-->
+
+  </div><!--ui container-->
+
+
+  {{/if}}
+
+</template>

@@ -6,7 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import { expect } from 'chai';
 import { removeAllEntities } from '/imports/api/base/BaseUtilities';
 
-if (Meteor.isServer) {
+/*if (Meteor.isServer) {
   describe('ProfileCollection', function testSuite() {
     const firstName = 'Kirk';
     const lastName = 'Wilson';
@@ -47,5 +47,5 @@ if (Meteor.isServer) {
       Profiles.removeIt(docID);
     });
   });
-}
+}*/
 
