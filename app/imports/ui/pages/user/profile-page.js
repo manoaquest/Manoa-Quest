@@ -20,7 +20,7 @@ Template.Profile_Page.helpers({
   roleCheck(){
     const profileData = Profiles.findDoc(FlowRouter.getParam('username'));
     console.log("Profile Data: " + profileData.role);
-    if (profileData.role == 'student') {
+    if (profileData.role == 'student' || profileData.role == undefined) {
       return 'Student_Profile';
     }
     else if(profileData.role == 'prof'){
