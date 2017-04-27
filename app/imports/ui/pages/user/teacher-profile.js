@@ -3,7 +3,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
-import { QuestData, QuestDataSchema } from '/imports/api/quests/questsdata.js';
+import { QuestData} from '/imports/api/quests/questsdata';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
@@ -19,7 +19,7 @@ Template.Teacher_Profile.onCreated(function onCreated() {
   this.context = Profiles.getSchema().namedContext('Profile_Page');
 
   //Subscribe to the quest metadata
-  this.subscribe('QuestData');
+  this.subscribe(QuestData.getPublicationName());
 });
 
 Template.Teacher_Profile.onRendered(function(){
@@ -48,7 +48,7 @@ Template.Teacher_Profile.helpers({
     return Profiles.findDoc(FlowRouter.getParam('username'));
   },
   questList(){
-    return QuestData.find();
+    return QuestData._collection.find();
   },
 });
 
@@ -77,7 +77,7 @@ Template.Teacher_Profile.events({
     instance.context.validate(updatedProfileData);
 
     if (instance.context.isValid()) {
-      const docID = Profiles. findDoc(FlowRouter.getParam('username'))._id;
+      const docID = Profiles.findDoc(FlowRouter.getParam('username'))._id;
       const id = Profiles.update(docID, { $set: updatedProfileData });
       instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);

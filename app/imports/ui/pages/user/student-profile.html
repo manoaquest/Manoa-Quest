@@ -63,7 +63,8 @@
         <tr>
           <th>Quest Name</th>
           <th>Possible EXP</th>
-          <th>Due</th>
+          <th>Gold Reward</th>
+          <th>Due Date</th>
           <th>Description</th>
         </tr>
         </thead>
@@ -71,10 +72,11 @@
         <tbody>
         {{#each quest in questList}}
         <tr>
-          <td>{{quest.name}}</td>
-          <td>{{quest.exp}}</td>
-          <td>{{quest.due}}</td>
-          <td>{{quest.message}}</td>
+          <td>{{quest.questname}}</td>
+          <td>{{quest.maxExp}}</td>
+          <td>{{quest.gold}}</td>
+          <td>{{quest.duedate}}</td>
+          <td>{{quest.description}}</td>
           <!--<td><a href="{{pathFor 'Edit_Contact_Page' _id=contact._id}}">Edit</a></td>-->
         </tr>
         {{/each}}
