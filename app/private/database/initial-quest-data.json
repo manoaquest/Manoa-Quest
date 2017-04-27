@@ -1,0 +1,39 @@
+{
+  "comment": "Initial contents for the Manoa Quest database. For development purposes only.",
+  "collections": [
+    {
+      "name": "QuestDataCollection",
+      "contents": [
+        {
+          "questname": "Test Quest 1",
+		  "maxExp": 100,
+		  "gold": 100,
+		  "duedate": "0-0-00",
+		  "description": "This is Test Quest 1"
+        },
+		{
+          "questname": "Test Quest 2",
+		  "maxExp": 200,
+		  "gold": 200,
+		  "duedate": "0-0-00",
+		  "description": "This is Test Quest 2"
+        },
+		{
+          "questname": "Test Quest 3",
+		  "maxExp": 350,
+		  "gold": 180,
+		  "duedate": "0-0-00",
+		  "description": "This is Test Quest 3"
+        },
+		{
+          "questname": "Test Quest 4",
+		  "maxExp": 10000,
+		  "gold": 999999999,
+		  "duedate": "0-0-00",
+		  "description": "This is Test Quest 4"
+        }
+      ]
+    }
+  ]
+}
+	

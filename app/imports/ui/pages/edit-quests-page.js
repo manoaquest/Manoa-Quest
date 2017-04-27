@@ -10,16 +10,18 @@ const displayErrorMessages = 'displayErrorMessages';
 
 
 Template.Edit_Quest_Page.onCreated(function onCreated() {
-  this.subscribe('QuestData');
+  console.log("Edit Quest Page Created");
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
-  this.context = QuestDataSchema.namedContext('Edit_QuestData_Page');
+
+  this.subscribe(QuestData.getPublicationName());
+  this.context = QuestData.getSchema().namedContext('Create_QuestData_Page');
 });
 
 Template.Edit_Quest_Page.helpers({
   questDataField(fieldName) {
-    const questData = QuestData.findOne(FlowRouter.getParam('_id'));
+    const questData = QuestData._collection.findOne(FlowRouter.getParam('_id'));
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     return questData && questData[fieldName];
   },
@@ -37,26 +39,28 @@ Template.Edit_Quest_Page.helpers({
 Template.Edit_Quest_Page.events({
   'submit .quest-data-form'(event, instance) {
     event.preventDefault();
+    console.log("Create Quest Button: onClick() event")
     // Get name (text field)
-    const name = event.target.Name.value;
+    const questname = event.target.Name.value;
     // Get exp (text area).
-    const exp = event.target.Exp.value;
+    const maxExp = parseInt(event.target.Exp.value);
     // Get resubmissions (text area).
-    const resubmissions = event.target.Resubmissions.value;
+    const gold = parseInt(event.target.Gold.value);
     // Get due (text area).
-    const due = event.target.Due.value;
+    const duedate = event.target.Due.value;
     // Get message (text area).
-    const message = event.target.Message.value;
+    const description = event.target.Description.value;
 
-    const updatedQuestData = { name, exp, resubmissions, due, message};
+    const updatedQuestData = { questname, maxExp, gold, duedate, description};
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newQuest reflects what will be inserted.
-    QuestDataSchema.clean(updatedQuestData);
+    QuestData.getSchema().clean(updatedQuestData);
     // Determine validity.
     instance.context.validate(updatedQuestData);
+    console.log("have we gotten this far?");
     if (instance.context.isValid()) {
-      const id = QuestData.update(FlowRouter.getParam('_id'), { $set: updatedQuestData });
+      const id = QuestData._collection.update(FlowRouter.getParam('_id'), { $set: updatedQuestData });
       instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();

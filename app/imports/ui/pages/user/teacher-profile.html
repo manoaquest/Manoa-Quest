@@ -54,9 +54,30 @@
 
     </form><!--form-->
 
+
+  <table style="margin-top: 20px" class="ui celled table">
+    <thead>
+    <tr>
+      <th>Quest Name</th>
+      <th>Possible EXP</th>
+      <th>Due</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {{#each quest in questList}}
+    <tr>
+      <td>{{quest.name}}</td>
+      <td>{{quest.exp}}</td>
+      <td>{{quest.due}}</td>
+      <td>{{quest.message}}</td>
+      <!--<td><a href="{{pathFor 'Edit_Contact_Page' _id=contact._id}}">Edit</a></td>-->
+    </tr>
+    {{/each}}
+    </tbody>
+  </table>
   </div><!--ui container-->
-
-
   {{/if}}
 
 </template>

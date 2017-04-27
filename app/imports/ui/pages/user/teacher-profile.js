@@ -3,17 +3,23 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
+import { QuestData} from '/imports/api/quests/questsdata';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
 Template.Teacher_Profile.onCreated(function onCreated() {
-  console.log("teacher profile");
-  this.subscribe(Profiles.getPublicationName());
+  console.log("student profile");
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
+
+  //Subscribe to the profile metadata
+  this.subscribe(Profiles.getPublicationName());
   this.context = Profiles.getSchema().namedContext('Profile_Page');
+
+  //Subscribe to the quest metadata
+  this.subscribe(QuestData.getPublicationName());
 });
 
 Template.Teacher_Profile.onRendered(function(){
@@ -40,6 +46,9 @@ Template.Teacher_Profile.helpers({
   },
   profile() {
     return Profiles.findDoc(FlowRouter.getParam('username'));
+  },
+  questList(){
+    return QuestData._collection.find();
   },
 });
 
@@ -68,7 +77,7 @@ Template.Teacher_Profile.events({
     instance.context.validate(updatedProfileData);
 
     if (instance.context.isValid()) {
-      const docID = Profiles. findDoc(FlowRouter.getParam('username'))._id;
+      const docID = Profiles.findDoc(FlowRouter.getParam('username'))._id;
       const id = Profiles.update(docID, { $set: updatedProfileData });
       instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
