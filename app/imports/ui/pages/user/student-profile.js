@@ -3,30 +3,30 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
-import { QuestData} from '/imports/api/quests/questsdata';
+import { QuestData } from '/imports/api/quests/questsdata';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
 Template.Student_Profile.onCreated(function onCreated() {
-  console.log("student profile");
+  console.log('student profile');
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
 
-  //Subscribe to the profile metadata
+  // Subscribe to the profile metadata
   this.subscribe(Profiles.getPublicationName());
   this.context = Profiles.getSchema().namedContext('Profile_Page');
 
-  //Subscribe to the quest metadata
+  // Subscribe to the quest metadata
   this.subscribe(QuestData.getPublicationName());
 });
 
-Template.Student_Profile.onRendered(function(){
-    //const profileData = Profiles.findDoc(FlowRouter.getParam('username'));
-    //console.log("Profile Data: "+profileData.role);
-    console.log("roleCheck()");
-  }
+Template.Student_Profile.onRendered(function () {
+    // const profileData = Profiles.findDoc(FlowRouter.getParam('username'));
+    // console.log("Profile Data: "+profileData.role);
+  console.log('roleCheck()');
+}
 );
 
 Template.Student_Profile.helpers({
@@ -47,7 +47,7 @@ Template.Student_Profile.helpers({
   profile() {
     return Profiles.findDoc(FlowRouter.getParam('username'));
   },
-  questList(){
+  questList() {
     return QuestData._collection.find();
   },
 });
