@@ -1,7 +1,8 @@
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import BaseCollection from '/imports/api/base/BaseCollection';
 import { check } from 'meteor/check';
-import { Meteor } from 'meteor/meteor';
+// meteor is defined but never used
+// import { Meteor } from 'meteor/meteor';
 
 class QuestCollection extends BaseCollection {
 
@@ -14,11 +15,18 @@ class QuestCollection extends BaseCollection {
       gold: { type: Number },
       duedate: { type: String },
       description: { type: String },
-      student: {type: String, optional: true },
+      student: { type: String, optional: true },
     }));
   }
 
-  define({ questname = '', maxExp = 0, requestedExp = 0, earnedExp = 0, gold = 0, duedate = '', description = '', student = ''}) {
+  define({ questname = '',
+           maxExp = 0,
+           requestedExp = 0,
+           earnedExp = 0,
+           gold = 0,
+           duedate = '',
+           description = '',
+           student = '' }) {
     // make sure required fields are OK.
     const checkPattern = {
       questname: String,
@@ -28,8 +36,8 @@ class QuestCollection extends BaseCollection {
       gold: Number,
       duedate: String,
       description: String,
-      student: String};
-    check({ questname, maxExp, requestedExp, earnedExp, gold, duedate, description, student}, checkPattern);
+      student: String };
+    check({ questname, maxExp, requestedExp, earnedExp, gold, duedate, description, student }, checkPattern);
 
     return this._collection.insert({ questname, maxExp, requestedExp, earnedExp, gold, duedate, description, student });
   }
@@ -44,7 +52,7 @@ class QuestCollection extends BaseCollection {
     const duedate = doc.duedate;
     const description = doc.description;
     const student = doc.student;
-    return { questname, maxExp, requestedExp, earnedExp, gold, duedate, description, student};
+    return { questname, maxExp, requestedExp, earnedExp, gold, duedate, description, student };
   }
 }
 

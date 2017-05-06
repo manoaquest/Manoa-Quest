@@ -3,8 +3,8 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Meteor } from 'meteor/meteor';
 
 Template.Landing_Page.onCreated(function onCreated() {
-  console.log("This is the landing page edit...");
-  $('.ui.checkbox').checkbox();
+  console.log('This is the landing page edit...');
+  // $('.ui.checkbox').checkbox();
 });
 
 Template.Landing_Page.events({
@@ -13,7 +13,9 @@ Template.Landing_Page.events({
    * @param event The click event.
    * @returns {boolean} False.
    */
-  'click .sign-in-button': function casLogout(event) {
+  // pretty sure this will never happen
+  // since while logged in it auto routes to profile
+  'click .sign-out-button': function casLogout(event) {
     event.preventDefault();
     Meteor.logout();
     return false;
@@ -29,10 +31,7 @@ Template.Landing_Page.events({
     const callback = function loginCallback(error) {
       if (error) {
         console.log(error);
-      }
-      else {
-        FlowRouter.go('Student_Home_Page');
-      }
+      } else { FlowRouter.go('Student_Home_Page');}
     };
     Meteor.loginWithCas(callback);
     return false;

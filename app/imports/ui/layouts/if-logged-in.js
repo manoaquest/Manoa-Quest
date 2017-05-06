@@ -14,7 +14,7 @@ Template.If_Logged_In.helpers({
    * @returns {boolean} True if there is a logged in user.
    */
   canShow: function canShow() {
-    console.log("if-logged-in");
+    console.log('if-logged-in');
     return !!Meteor.user();
   },
 });
