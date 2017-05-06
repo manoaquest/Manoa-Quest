@@ -44,7 +44,7 @@ FlowRouter.route('/student-home-page', {
 });
 
 function addUserBodyClass() {
- $('body').addClass('user-layout-body');
+  $('body').addClass('user-layout-body');
 }
 
 function removeUserBodyClass() {
