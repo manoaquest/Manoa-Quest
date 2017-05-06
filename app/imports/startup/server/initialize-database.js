@@ -22,7 +22,8 @@ function getDefinitions(restoreJSON, collection) {
  * @param restoreJSON The structure containing all of the definitions.
  */
 function restoreCollection(collection, restoreJSON) {
-  console.log("collection._collectionName: "+collection._collectionName);
+  // commented out because it threw eslint error
+  // console.log('collection._collectionName: '+collection._collectionName);
   const definitions = getDefinitions(restoreJSON, collection._collectionName);
   console.log(`Defining ${definitions.length} ${collection._collectionName} documents.`);
   _.each(definitions, definition => collection.define(definition));
@@ -31,7 +32,7 @@ function restoreCollection(collection, restoreJSON) {
 Meteor.startup(() => {
   /** Only initialize database if it's empty. */
 
-      //Rebuild the Profile collection from file.
+      // Rebuild the Profile collection from file.
   const collectionList = [Profiles];
   const totalDocuments = _.reduce(collectionList, function reducer(memo, collection) {
     return memo + collection.count();
@@ -44,7 +45,7 @@ Meteor.startup(() => {
       restoreCollection(collection, restoreJSON);
     });
   }
-      //Rebuild the Quest collection from file.
+      // Rebuild the Quest collection from file.
   const questsList = [QuestData];
   const totalQuests = _.reduce(questsList, function reducer(memo, collection) {
     return memo + collection.count();
