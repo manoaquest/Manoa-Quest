@@ -25,7 +25,7 @@ class ProfileCollection extends BaseCollection {
       picture: { type: SimpleSchema.RegEx.Url, optional: true },
       gold: { type: Number, optional: true },
       experience: { type: Number, optional: true },
-      role: { type: String, optional: true},
+      role: { type: String, optional: true },
     }));
   }
 
@@ -42,12 +42,18 @@ class ProfileCollection extends BaseCollection {
    * @param { Object } description Object with required key username.
    * Remaining keys are optional.
    * Username must be unique for all users. It should be the UH email account.
-   * Interests is an array of defined interest names.
    * @throws { Meteor.Error } If a user with the supplied username already exists, or
    * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
    * @returns The newly created docID.
    */
-  define({ firstName = '', lastName = '', username, avatarName = '', picture = '', gold = 0, experience = 0, role=''}) {
+  define({ firstName = '',
+           lastName = '',
+           username,
+           avatarName = '',
+           picture = '',
+           gold = 0,
+           experience = 0,
+           role = '' }) {
     // make sure required fields are OK.
     const checkPattern = { firstName: String,
       lastName: String,
@@ -56,7 +62,7 @@ class ProfileCollection extends BaseCollection {
       picture: String,
       gold: Number,
       experience: Number,
-      role: String};
+      role: String };
     check({ firstName, lastName, username, avatarName, picture, gold, experience, role }, checkPattern);
 
     if (this.find({ username }).count() > 0) {

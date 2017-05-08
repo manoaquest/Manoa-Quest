@@ -7,11 +7,11 @@
       <h4 class="ui dividing header">Edit Student Data</h4>
 
       
-      {{> Text_Form_Control label="Name" required=true errorMessage=(fieldError "quest name")}}
-      {{> Text_Form_Control label="Exp" required=true errorMessage=(fieldError "exp")}}
-      {{> Text_Form_Control label="Resubmissions" required=true errorMessage=(fieldError "resubmissions")}}
-      {{> Text_Form_Control label="Due" required=true errorMessage=(fieldError "due date")}}
-      {{> Text_Form_Control label="Message" required=true errorMessage=(fieldError "message")}}
+      {{> Text_Form_Control label="Name" required=true value=(questDataField 'questname') errorMessage=(fieldError "quest name")}}
+      {{> Text_Form_Control label="Exp" required=true value=(questDataField 'maxExp') errorMessage=(fieldError "exp")}}
+      {{> Text_Form_Control label="Gold" required=true value=(questDataField 'gold') errorMessage=(fieldError "resubmissions")}}
+      {{> Text_Form_Control label="Due" required=true value=(questDataField 'duedate') errorMessage=(fieldError "due date")}}
+      {{> Text_Form_Control label="Description" required=true value=(questDataField 'description') errorMessage=(fieldError "message")}}
 
       <button class="ui primary button" type="submit">Update</button>
       {{#if displaySuccessMessage}}

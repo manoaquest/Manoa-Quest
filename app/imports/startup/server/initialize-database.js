@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
+import { QuestData } from '/imports/api/quests/questsdata';
 import { _ } from 'meteor/underscore';
 
 /* global Assets */
@@ -21,6 +22,8 @@ function getDefinitions(restoreJSON, collection) {
  * @param restoreJSON The structure containing all of the definitions.
  */
 function restoreCollection(collection, restoreJSON) {
+  // commented out because it threw eslint error
+  // console.log('collection._collectionName: '+collection._collectionName);
   const definitions = getDefinitions(restoreJSON, collection._collectionName);
   console.log(`Defining ${definitions.length} ${collection._collectionName} documents.`);
   _.each(definitions, definition => collection.define(definition));
@@ -28,6 +31,8 @@ function restoreCollection(collection, restoreJSON) {
 
 Meteor.startup(() => {
   /** Only initialize database if it's empty. */
+
+      // Rebuild the Profile collection from file.
   const collectionList = [Profiles];
   const totalDocuments = _.reduce(collectionList, function reducer(memo, collection) {
     return memo + collection.count();
@@ -40,4 +45,19 @@ Meteor.startup(() => {
       restoreCollection(collection, restoreJSON);
     });
   }
+      // Rebuild the Quest collection from file.
+  const questsList = [QuestData];
+  const totalQuests = _.reduce(questsList, function reducer(memo, collection) {
+    return memo + collection.count();
+  }, 0);
+
+  if (totalQuests === 0) {
+    const fileName = Meteor.settings.public.initialQuestDatabaseFileName;
+    console.log(`Restoring database from file ${fileName}.`);
+    const restoreQuestJSON = JSON.parse(Assets.getText(fileName));
+    _.each(questsList, collection => {
+      restoreCollection(collection, restoreQuestJSON);
+    });
+  }
 });
+

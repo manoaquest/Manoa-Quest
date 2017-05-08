@@ -58,6 +58,31 @@
       </div>
       {{/if}}
 
+      <table style="margin-top: 20px" class="ui celled table">
+        <thead>
+        <tr>
+          <th>Quest Name</th>
+          <th>Possible EXP</th>
+          <th>Gold Reward</th>
+          <th>Due Date</th>
+          <th>Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {{#each quest in questList}}
+        <tr>
+          <td>{{quest.questname}}</td>
+          <td>{{quest.maxExp}}</td>
+          <td>{{quest.gold}}</td>
+          <td>{{quest.duedate}}</td>
+          <td>{{quest.description}}</td>
+          <!--<td><a href="{{pathFor 'Edit_Contact_Page' _id=contact._id}}">Edit</a></td>-->
+        </tr>
+        {{/each}}
+        </tbody>
+      </table>
+
     </form><!--form-->
     <h1>Current Quests</h1>
     <table class="ui compact celled definition table">

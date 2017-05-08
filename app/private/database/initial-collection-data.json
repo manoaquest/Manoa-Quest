@@ -22,7 +22,17 @@
           "picture": "/images/whitemage.jpg",
           "gold": 30,
           "experience": 100,
-		  "role": "student"
+		  "role": "prof"
+        },
+        {
+          "firstName": "Kirk",
+          "lastName": "Wilson",
+          "username": "zzzz",
+          "avatarName": "Kerk",
+          "picture": "/images/whitemage.jpg",
+          "gold": 30,
+          "experience": 100,
+          "role": "student"
         }
       ]
     }
