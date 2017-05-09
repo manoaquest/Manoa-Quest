@@ -48,7 +48,7 @@ Template.Teacher_Profile.helpers({
     return Profiles.findDoc(FlowRouter.getParam('username'));
   },
   questList() {
-    return QuestData._collection.find( {'requestedExp': { $gt: 0} ,  'earnedExp': 0 });
+    return QuestData._collection.find({ requestedExp: { $gt: 0 }, earnedExp: 0 });
   },
 });
 
@@ -98,34 +98,34 @@ Template.Teacher_Profile.events({
 
     console.log('Approving Quest');
 
-    console.log('ID of the clicked element: '+this.questname);
+    // console.log('ID of the clicked element: '+this.questname);
 
-    const questData = QuestData._collection.findOne(FlowRouter.getParam('_id'));
+    // const questData = QuestData._collection.findOne(FlowRouter.getParam('_id'));
 
     // Get name (text field)
     const questname = this.questname;
-    console.log("questname: "+questname)
+    // console.log("questname: "+questname)
     // Get exp (text area).
     const maxExp = parseInt(this.maxExp, 10);
-    console.log("maxExp: "+maxExp)
+    // console.log("maxExp: "+maxExp)
 
     const requestedExp = parseInt(this.requestedExp, 10);
-    console.log("requestedExp: "+requestedExp)
+    // console.log("requestedExp: "+requestedExp)
 
     const earnedExp = parseInt(this.requestedExp, 10);
 
     // Get resubmissions (text area).
     const gold = parseInt(this.gold, 10);
-    console.log("gold: "+gold)
+    // console.log("gold: "+gold)
     // Get due (text area).
     const duedate = this.duedate;
-    console.log("duedate: "+duedate)
+    // console.log("duedate: "+duedate)
     // Get message (text area).
     const description = this.description;
-    console.log("description: "+description)
+    // console.log("description: "+description)
 
     const student = this.name;
-    console.log("Student: "+student);
+    // console.log("Student: "+student);
 
     const updatedQuestData = { questname, maxExp, requestedExp, earnedExp, gold, duedate, description, student };
     // Clear out any old validation errors.
@@ -134,14 +134,14 @@ Template.Teacher_Profile.events({
     QuestData.getSchema().clean(updatedQuestData);
     // Determine validity.
     instance.context.validate(updatedQuestData);
-    console.log('have we gotten this far? ----- '+instance.context.validate(updatedQuestData));
+    // console.log('have we gotten this far? ----- '+instance.context.validate(updatedQuestData));
     if (instance.context.isValid()) {
-      console.log('submitting quest...')
+      // console.log('submitting quest...')
       const id = QuestData._collection.update(this._id, { $set: updatedQuestData });
       instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
       instance.$('.dropdown').dropdown('restore defaults');
-      FlowRouter.reload()
+      FlowRouter.reload();
     } else {
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
