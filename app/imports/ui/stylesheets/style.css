@@ -4,6 +4,7 @@ body {
   background: url('images/woodtilebg.jpg');
   padding-top: 61px;  /* Move body of page below navbar. */
   margin: 0;
+  font-family: 'VT323', monospace;
 }
 
 th {
@@ -43,7 +44,7 @@ table.ui.compact.celled.definition.table th{
 }
 
 #user-tables h1 {
-  font-family: 'Wendy One', sans-serif;
+  font-family: ‘Wendy One’, sans-serif;
   font-size: 26px;
     color: #f0d58e;
     text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
@@ -129,13 +130,13 @@ textarea {
 
 .content-container{
   padding: 10px 50px 10px 50px;
-  background-image: url('images/parchmentbg3.png');
+  background-image: url(‘images/parchmentbg3.png’);
   background-size: 100%
 }
 
 .input__label::before,
 .input__label:after {
-  content: '';
+  content: ‘’;
   position: absolute;
   left: 0;
   width: 100%;
@@ -194,9 +195,35 @@ textarea {
   transition: transform 0.3s;
 }
 
+.login-container{
+    width: 350px;
+    height: 240px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f0d58e;
+    border-style: outset;
+    border-color: #474933;
+    font-family: ‘Yanone Kaffeesatz’, sans-serif;
+    box-shadow: 0px 2px 30px 9px #472e1f;
+}
+
+.login-container h2 {
+  font-family: ‘VT323’, monospace;
+  font-size: 45px;
+  text-shadow: 3px 3px 4px #000;
+}
+
 .ui-container{
-  /*background-image: url('/images/parchmentbg3.png');*/
+  /*background-image: url(‘/images/parchmentbg3.png’);*/
   max-width: 80%;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   padding: 10px 50px 10px 50px;
@@ -207,20 +234,37 @@ textarea {
   font-family: 'VT323', monospace;
 }
 
-.avatar-header{
+div.ui.top.fixed.borderless.inverted.menu h1 {
+  font-family: 'VT323', monospace;
+  font-size: 34px;
+}
+.cas-login, .cas-logout {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+}
+
+.avatar-header, .ui.container.segment h1{
   margin-bottom: 10px;
   /*padding-bottom: 0.21428571rem;*/
   border-bottom: 1px solid #474933;
-  font-family: 'Wendy One', sans-serif;
+  font-family: ‘Wendy One’, sans-serif;
   font-size: 22px;
     color: #f0d58e;
     text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
 }
 
-.avatar-header h1{
-  font-family: 'Wendy One', sans-serif;
+.avatar-header h1, .ui.container.segment h1{
+  font-family: ‘Wendy One’, sans-serif;
   line-height: 14px;
   margin-top: 3px;
+}
+
+.ui.container.segment {
+  background-color: #f0d58e;
+}
+
+.ui.container.segment h1 {
+  font-size: 26px;
 }
 
 .avatar-info-container h1{
@@ -260,13 +304,14 @@ textarea {
   width: 100%;
   height: 100%;
 }
+
 .ui-dividing-header{
   line-height: 1px;
   margin-top: 3px;
     margin-bottom: 10px;
     padding-bottom: 0.21428571rem;
     border-bottom: 1px solid #474933;
-  font-family: 'Wendy One', sans-serif;
+  font-family: ‘Wendy One’, sans-serif;
   font-size: 22px;
   color: #f0d58e;
   text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
@@ -274,6 +319,7 @@ textarea {
 
 .ui.inverted.menu{
   background-color: #6FB138;
+  font-family: 'VT323', monospace;
 }
 
 .form-holder {
@@ -297,4 +343,8 @@ textarea {
 }
 .ui.checkbox label {
   color: #ddd;
+}
+
+.ui.center.aligned.container {
+  font-size: 18px;
 }
