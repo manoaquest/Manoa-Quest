@@ -1,8 +1,11 @@
 <template name="User_Header">
   <div class="ui top fixed borderless inverted menu">
     <div class="ui container">
-      <div class="item"><h1>Manoa Quest</h1></div>
-      <div class="right aligned item">{{> Cas_Login }}</div>
+
+      <div class="item home-page"><h1>Manoa Quest</h1></div>
+      <div class="right aligned item"><a class="{{ isActiveRoute 'Leaderboard_Page'}} right aligned item" href="{{ pathFor 'Leaderboard_Page' }}">Leaderboard</a></div>
+      <div class="item">{{> Cas_Login }}</div>
+
     </div>
   </div>
 </template>
