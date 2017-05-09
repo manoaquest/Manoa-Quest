@@ -1,0 +1,40 @@
+<template name="Leaderboard_Page">
+
+  {{#if Template.subscriptionsReady}}
+  <!--Really ugly but can't get CSS to work any other way-->
+  <div class="ui container"
+       style="background-image: url('/images/parchmentbg3.png'); padding: 10px 50px 10px 50px; background-size: 100%">
+
+  <div><h3>Leaderboard</h3></div>
+
+    <table style="margin-top: 20px" class="ui celled table">
+
+      <thead>
+      <tr>
+        <th>Avatar Name</th>
+        <th>Experience</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      {{#each studentList}}
+      <tr data-id="{{_id}}">
+        <td>
+          <h4 class="ui image header">
+            <img src="{{profile.picture}}" class="ui mini image">
+            <div class="content">
+              {{avatarName}}
+            </div>
+          </h4>
+        </td>
+        <td>{{experience}}</td>
+
+        <!--<td><a href="{{pathFor 'Edit_Contact_Page' _id=contact._id}}">Edit</a></td>-->
+      </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div><!--ui container-->
+  {{/if}}
+
+</template>
