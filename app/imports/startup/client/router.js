@@ -27,7 +27,7 @@ FlowRouter.route('/create-quest', {
   },
 });
 
-FlowRouter.route('/quests/:_id', {
+FlowRouter.route('/edit-quest/:_id', {
   name: 'Edit_Quest_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'Edit_Quest_Page' });
@@ -63,6 +63,14 @@ userRoutes.route('/profile', {
   name: profilePageRouteName,
   action() {
     BlazeLayout.render('User_Layout', { main: profilePageRouteName });
+  },
+});
+
+export const submitPageRouteName = 'Submit_Quest_Page';
+FlowRouter.route('/submit-quest/:_id', {
+  name: submitPageRouteName,
+  action() {
+    BlazeLayout.render('App_Body', { main: submitPageRouteName });
   },
 });
 
