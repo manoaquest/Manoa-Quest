@@ -87,6 +87,9 @@ Template.Submit_Quest_Page.events({
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();
       instance.$('.dropdown').dropdown('restore defaults');
+      const route = '/' + student + '/profile'; // eslint-disable-line prefer-template
+      // FlowRouter.go('/' + student + '/profile');
+      FlowRouter.go(route);
     } else {
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
