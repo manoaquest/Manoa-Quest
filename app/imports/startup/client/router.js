@@ -34,6 +34,13 @@ FlowRouter.route('/edit-quest/:_id', {
   },
 });
 
+FlowRouter.route('/leaderboard', {
+  name: 'Leaderboard_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Leaderboard_Page' });
+  },
+});
+
 // Profile Routes
 
 function addUserBodyClass() {
