@@ -1,0 +1,7 @@
+<template name="Student_Layout">
+  {{#If_Authorized_Student}}
+    {{> User_Header}}
+    {{>Template.dynamic template=main}}
+    {{> User_Footer}}
+  {{/If_Authorized_Student}}
+</template>
