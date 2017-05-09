@@ -67,13 +67,6 @@ FlowRouter.route('/submit-quest/:_id', {
   },
 });
 
-FlowRouter.route('/teacher-page', {
-  name: 'Teacher_Page',
-  action() {
-    BlazeLayout.render('App_Body', { main: 'Teacher_Page' });
-  },
-});
-
 // Page Not Found Route
 
 FlowRouter.notFound = {
