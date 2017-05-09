@@ -1,0 +1,39 @@
+<template name="Submit_Quest_Page">
+  {{#if Template.subscriptionsReady}}
+  <div style="margin-top: 20px" class="ui container content-container">
+    <table style="margin-top: 20px" class="ui celled table">
+      <thead>
+      <tr>
+        <th>Quest Name</th>
+        <th>Possible EXP</th>
+        <th>Gold Reward</th>
+        <th>Due Date</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr>
+        <td>{{questDataField 'questname'}}</td>
+        <td>{{questDataField 'maxExp'}}</td>
+        <td>{{questDataField 'gold'}}</td>
+        <td>{{questDataField 'duedate'}}</td>
+        <td>{{questDataField 'description'}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <form class="ui form submit-quest-form {{ successClass }} {{ errorClass }}">
+      <h4 class="ui dividing header">Complete A Quest!</h4>
+      {{> Text_Form_Control label="RequestedEXP" required=true errorMessage=(fieldError "Must be a number")}}
+
+      <button class="ui primary button" type="submit">Update</button>
+      {{#if displaySuccessMessage}}
+      <div class="ui success message">
+        <p>Your reward is on it's way!.</p>
+      </div>
+      {{/if}}
+    </form>
+  </div>
+  {{/if}}
+</template>

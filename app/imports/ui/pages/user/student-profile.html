@@ -66,6 +66,7 @@
           <th>Gold Reward</th>
           <th>Due Date</th>
           <th>Description</th>
+          <th>Edit</th>
         </tr>
         </thead>
 
@@ -77,6 +78,7 @@
           <td>{{quest.gold}}</td>
           <td>{{quest.duedate}}</td>
           <td>{{quest.description}}</td>
+          <td><a href="{{pathFor 'Submit_Quest_Page' _id=quest._id}}">Edit</a></td>
           <!--<td><a href="{{pathFor 'Edit_Contact_Page' _id=contact._id}}">Edit</a></td>-->
         </tr>
         {{/each}}

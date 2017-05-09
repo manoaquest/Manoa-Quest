@@ -6,4 +6,3 @@ import './student-profile.js';
 
 import './teacher-profile.html';
 import './teacher-profile.js';
-
