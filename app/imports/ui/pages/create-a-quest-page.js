@@ -44,6 +44,10 @@ Template.Create_A_Quest_Page.events({
     const questname = event.target.Name.value;
     // Get exp (text area).
     const maxExp = parseInt(event.target.Exp.value, 10);
+
+    const requestedExp = 0;
+
+    const earnedExp = 0;
     // Get resubmissions (text area).
     const gold = parseInt(event.target.Gold.value, 10);
     // Get due (text area).
@@ -51,7 +55,9 @@ Template.Create_A_Quest_Page.events({
     // Get message (text area).
     const description = event.target.Description.value;
 
-    const newQuest = { questname, maxExp, gold, duedate, description };
+    const student = '';
+
+    const newQuest = { questname, maxExp, requestedExp, earnedExp, gold, duedate, description, student };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newQuest reflects what will be inserted.
