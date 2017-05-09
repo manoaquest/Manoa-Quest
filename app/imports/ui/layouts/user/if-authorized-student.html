@@ -1,0 +1,15 @@
+<template name="If_Authorized_Student">
+  {{#if authInProcessStudent}}
+    {{> Loading }}
+  {{else}}
+    {{#if Template.subscriptionsReady}}
+      {{#if isAuthorizedStudent}}
+        {{> UI.contentBlock }}
+      {{else}}
+        <div class="ui centered aligned container" style="background-color: white;">
+          <div class="ui center aligned attached segment">You are not authorized to view this page.</div>
+        </div>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+</template>

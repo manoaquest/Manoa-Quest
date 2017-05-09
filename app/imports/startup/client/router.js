@@ -23,14 +23,14 @@ FlowRouter.route('/approve-quest', {
 FlowRouter.route('/create-quest', {
   name: 'Create_A_Quest_Page',
   action() {
-    BlazeLayout.render('App_Body', { main: 'Create_A_Quest_Page' });
+    BlazeLayout.render('Prof_Layout', { main: 'Create_A_Quest_Page' });
   },
 });
 
 FlowRouter.route('/edit-quest/:_id', {
   name: 'Edit_Quest_Page',
   action() {
-    BlazeLayout.render('App_Body', { main: 'Edit_Quest_Page' });
+    BlazeLayout.render('Prof_Layout', { main: 'Edit_Quest_Page' });
   },
 });
 
@@ -70,7 +70,7 @@ export const submitPageRouteName = 'Submit_Quest_Page';
 FlowRouter.route('/submit-quest/:_id', {
   name: submitPageRouteName,
   action() {
-    BlazeLayout.render('App_Body', { main: submitPageRouteName });
+    BlazeLayout.render('Student_Layout', { main: submitPageRouteName });
   },
 });
 
