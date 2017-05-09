@@ -7,9 +7,12 @@
         {
           "questname": "Test Quest 1",
 		  "maxExp": 100,
+		  "requestedExp": 0,
+		  "earnedExp": 0,
 		  "gold": 100,
 		  "duedate": "0-0-00",
-		  "description": "This is Test Quest 1"
+		  "description": "This is Test Quest 1",
+		  "student": ""
         },
 		{
           "questname": "Test Quest 2",
@@ -31,7 +34,47 @@
 		  "gold": 999999999,
 		  "duedate": "0-0-00",
 		  "description": "This is Test Quest 4"
-        }
+        },
+        {
+          "questname": "Test Quest 1",
+		  "maxExp": 100,
+		  "requestedExp": 40,
+		  "earnedExp": 0,
+		  "gold": 100,
+		  "duedate": "0-0-00",
+		  "description": "This is Test Quest 1",
+		  "student": "kirk6"
+        },        
+		{
+          "questname": "Test Quest 2",
+		  "maxExp": 100,
+		  "requestedExp": 30,
+		  "earnedExp": 0,
+		  "gold": 100,
+		  "duedate": "0-0-00",
+		  "description": "This is Test Quest 1",
+		  "student": "kirk6"
+        },        
+		{
+          "questname": "Test Quest 3",
+		  "maxExp": 100,
+		  "requestedExp": 100,
+		  "earnedExp": 0,
+		  "gold": 100,
+		  "duedate": "0-0-00",
+		  "description": "This is Test Quest 1",
+		  "student": "kirk6"
+        },       
+		{
+          "questname": "Test Quest 4",
+		  "maxExp": 100,
+		  "requestedExp": 95,
+		  "earnedExp": 0,
+		  "gold": 100,
+		  "duedate": "0-0-00",
+		  "description": "This is Test Quest 1",
+		  "student": "kirk6"
+        }       
       ]
     }
   ]
