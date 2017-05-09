@@ -1,8 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=VT323|Wendy+One|Yanone+Kaffeesatz');
+
 body {
-  padding-top: 61px;  /* Move body of page below navbar. */
   background: url('images/woodtilebg.jpg');
+  padding-top: 61px;  /* Move body of page below navbar. */
   margin: 0;
 }
+
+th {
+  font-size: 18px;
+}
+
+table.ui.celled.table {
+  border-style: outset;
+  border-color: #474933;
+  box-shadow: 1px 1px 1px 1px #474933;
+}
+
+/*.ui-celled-table{
+  margin-top: 20px;
+  border-style: outset;
+  border-color: #474933;
+  box-shadow: 1px 1px 1px 1px #474933;
+}
+.table-headings{
+  padding: 0.828571em 0.685714em;
+}*/
+
+table.ui.celled.table th, tr, td {
+  border: 1px solid #e3e4e5;
+  background-color: #fbfce1;
+  padding: 10px;
+}
+table.ui.compact.celled.definition.table{
+  border-style: outset;
+  border-color: #474933;
+  box-shadow: 1px 1px 1px 1px #474933;
+}
+
+table.ui.compact.celled.definition.table th{
+  color: black;
+  border: 1px solid #e3e4e5;
+}
+
+#user-tables h1 {
+  font-family: 'Wendy One', sans-serif;
+  font-size: 26px;
+    color: #f0d58e;
+    text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
+}
+
 #container {
   position: absolute;
   width: 710px;
@@ -146,6 +192,80 @@ textarea {
   color: #000;
   -webkit-transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
+}
+
+.ui-container{
+  /*background-image: url('/images/parchmentbg3.png');*/
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 50px 10px 50px;
+  background-size: 100%;
+  background-color: #f0d58e;
+  border-style: outset;
+  border-color: #474933;
+  font-family: 'VT323', monospace;
+}
+
+.avatar-header{
+  margin-bottom: 10px;
+  /*padding-bottom: 0.21428571rem;*/
+  border-bottom: 1px solid #474933;
+  font-family: 'Wendy One', sans-serif;
+  font-size: 22px;
+    color: #f0d58e;
+    text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
+}
+
+.avatar-header h1{
+  font-family: 'Wendy One', sans-serif;
+  line-height: 14px;
+  margin-top: 3px;
+}
+
+.avatar-info-container h1{
+  font-size: 18px;
+  margin: 3px;
+}
+
+.avatar-name-img{
+  border: solid;
+  display: inline-flex;
+  height: 115px;
+  width: 100%;
+  background-color: #010101;
+  color: #fbfce1;
+  box-shadow: 1px 1px 3px 1px black;
+}
+
+.exp, .gil{
+  display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.avatar-name h1, .exp h1, .gil h1{
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+}
+
+.ui-small-image{
+  width: 100px;
+  border: solid;
+  background-color: #fbfce1;
+  color: #010101;
+}
+
+.ui-dividing-header{
+  line-height: 1px;
+  margin-top: 3px;
+    margin-bottom: 10px;
+    padding-bottom: 0.21428571rem;
+    border-bottom: 1px solid #474933;
+  font-family: 'Wendy One', sans-serif;
+  font-size: 22px;
+  color: #f0d58e;
+  text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
 }
 
 .ui.inverted.menu{
