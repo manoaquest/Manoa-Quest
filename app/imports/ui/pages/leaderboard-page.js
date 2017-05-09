@@ -37,8 +37,8 @@ Template.Leaderboard_Page.helpers({
     return Profiles.findDoc(FlowRouter.getParam('username'));
   },
   studentList() {
-    return Profiles._collection.find({}, {sort: {'experience': -1}});
-    //return Profiles._collection.find().sort({'experience':-1});
+    return Profiles._collection.find({}, { sort: { experience: -1 } });
+    // return Profiles._collection.find().sort({'experience':-1});
   },
 });
 
