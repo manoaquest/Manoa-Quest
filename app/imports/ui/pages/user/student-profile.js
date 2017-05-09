@@ -48,7 +48,7 @@ Template.Student_Profile.helpers({
     return Profiles.findDoc(FlowRouter.getParam('username'));
   },
   questList() {
-    return QuestData._collection.find( {'requestedExp': 0} );
+    return QuestData._collection.find({ requestedExp: 0 });
   },
 });
 

@@ -7,6 +7,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { QuestData } from '../../api/quests/questsdata.js';
 // eslint error: FlowRouter wasn't imported
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Meteor } from 'meteor/meteor';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
@@ -49,26 +50,26 @@ Template.Submit_Quest_Page.events({
 
     // Get name (text field)
     const questname = questData.questname;
-    console.log("questname: "+questname)
+    // console.log("questname: "+questname)
     // Get exp (text area).
     const maxExp = parseInt(questData.maxExp, 10);
-    console.log("maxExp: "+maxExp)
+    // console.log("maxExp: "+maxExp)
 
     const requestedExp = parseInt(event.target.RequestedEXP.value, 10);
-    console.log("requestedExp: "+requestedExp)
+    // console.log("requestedExp: "+requestedExp)
 
     // Get resubmissions (text area).
     const gold = parseInt(questData.gold, 10);
-    console.log("gold: "+gold)
+    // console.log("gold: "+gold)
     // Get due (text area).
     const duedate = questData.duedate;
-    console.log("duedate: "+duedate)
+    // console.log("duedate: "+duedate)
     // Get message (text area).
     const description = questData.description;
-    console.log("description: "+description)
+    // console.log("description: "+description)
 
     const student = Meteor.user().profile.name;
-    console.log("Student: "+student);
+    // console.log("Student: "+student);
 
     const newQuest = { questname, maxExp, requestedExp, gold, duedate, description, student };
     // Clear out any old validation errors.
@@ -77,11 +78,11 @@ Template.Submit_Quest_Page.events({
     QuestData.getSchema().clean(newQuest);
     // Determine validity.
     instance.context.validate(newQuest);
-    console.log('have we gotten this far? ----- '+instance.context.validate(newQuest));
+    // console.log('have we gotten this far? ----- '+instance.context.validate(newQuest));
     if (instance.context.isValid()) {
-      console.log('submitting quest...')
+      // console.log('submitting quest...')
       const id = QuestData._collection.insert(newQuest);
-      //const id = QuestData._collection.update(FlowRouter.getParam('_id'), { $set: updatedQuestData });
+      // const id = QuestData._collection.update(FlowRouter.getParam('_id'), { $set: updatedQuestData });
       instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();

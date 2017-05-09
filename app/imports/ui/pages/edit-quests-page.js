@@ -63,7 +63,7 @@ Template.Edit_Quest_Page.events({
     QuestData.getSchema().clean(updatedQuestData);
     // Determine validity.
     instance.context.validate(updatedQuestData);
-    console.log('have we gotten this far? ----- '+instance.context.validate(updatedQuestData));
+    // console.log('have we gotten this far? ----- '+instance.context.validate(updatedQuestData));
     if (instance.context.isValid()) {
       const id = QuestData._collection.update(FlowRouter.getParam('_id'), { $set: updatedQuestData });
       instance.messageFlags.set(displaySuccessMessage, id);
