@@ -34,14 +34,14 @@ FlowRouter.route('/edit-quest/:_id', {
   },
 });
 
-// Profile Routes
-
-FlowRouter.route('/student-home-page', {
-  name: 'Student_Home_Page',
+FlowRouter.route('/leaderboard', {
+  name: 'Leaderboard_Page',
   action() {
-    BlazeLayout.render('App_Body', { main: 'Student_Home_Page' });
+    BlazeLayout.render('App_Body', { main: 'Leaderboard_Page' });
   },
 });
+
+// Profile Routes
 
 function addUserBodyClass() {
   $('body').addClass('user-layout-body');
@@ -71,13 +71,6 @@ FlowRouter.route('/submit-quest/:_id', {
   name: submitPageRouteName,
   action() {
     BlazeLayout.render('App_Body', { main: submitPageRouteName });
-  },
-});
-
-FlowRouter.route('/teacher-page', {
-  name: 'Teacher_Page',
-  action() {
-    BlazeLayout.render('App_Body', { main: 'Teacher_Page' });
   },
 });
 
