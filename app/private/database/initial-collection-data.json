@@ -17,18 +17,24 @@
         {
           "firstName": "Kirk",
           "lastName": "Wilson",
-          "username": "zzzz",
+          "username": "kirk6",
           "avatarName": "Kerk",
           "picture": "/images/whitemage.jpg",
           "gold": 30,
           "experience": 100,
-		  "role": "student"
+		  "role": "prof"
         },
         {
           "firstName": "Kirk",
           "lastName": "Wilson",
+
           "username": "kirk6",
+<<<<<<< HEAD
           "avatarName": "Kerk",
+=======
+          "avatarName": "Krek",
+
+>>>>>>> origin/issue-18
           "picture": "/images/whitemage.jpg",
           "gold": 30,
           "experience": 100,
