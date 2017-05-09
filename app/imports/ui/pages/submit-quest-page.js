@@ -8,23 +8,21 @@ import { QuestData } from '../../api/quests/questsdata.js';
 // eslint error: FlowRouter wasn't imported
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-/* eslint-disable no-param-reassign */
-
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
 
-Template.Edit_Quest_Page.onCreated(function onCreated() {
-  console.log('Edit Quest Page Created');
+Template.Submit_Quest_Page.onCreated(function onCreated() {
+  console.log('Submit Quest Page Created');
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
 
   this.subscribe(QuestData.getPublicationName());
-  this.context = QuestData.getSchema().namedContext('Create_QuestData_Page');
+  this.context = QuestData.getSchema().namedContext('Submit_Quest_Page');
 });
 
-Template.Edit_Quest_Page.helpers({
+Template.Submit_Quest_Page.helpers({
   questDataField(fieldName) {
     const questData = QuestData._collection.findOne(FlowRouter.getParam('_id'));
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
@@ -41,31 +39,49 @@ Template.Edit_Quest_Page.helpers({
   },
 });
 
-Template.Edit_Quest_Page.events({
-  'submit .quest-data-form'(event, instance) {
+
+Template.Submit_Quest_Page.events({
+  'submit .submit-quest-form'(event, instance) {
     event.preventDefault();
     console.log('Create Quest Button: onClick() event');
-    // Get name (text field)
-    const questname = event.target.Name.value;
-    // Get exp (text area).
-    const maxExp = parseInt(event.target.Exp.value, 10);
-    // Get resubmissions (text area).
-    const gold = parseInt(event.target.Gold.value, 10);
-    // Get due (text area).
-    const duedate = event.target.Due.value;
-    // Get message (text area).
-    const description = event.target.Description.value;
 
-    const updatedQuestData = { questname, maxExp, gold, duedate, description };
+    const questData = QuestData._collection.findOne(FlowRouter.getParam('_id'));
+
+    // Get name (text field)
+    const questname = questData.questname;
+    console.log("questname: "+questname)
+    // Get exp (text area).
+    const maxExp = parseInt(questData.maxExp, 10);
+    console.log("maxExp: "+maxExp)
+
+    const requestedExp = parseInt(event.target.RequestedEXP.value, 10);
+    console.log("requestedExp: "+requestedExp)
+
+    // Get resubmissions (text area).
+    const gold = parseInt(questData.gold, 10);
+    console.log("gold: "+gold)
+    // Get due (text area).
+    const duedate = questData.duedate;
+    console.log("duedate: "+duedate)
+    // Get message (text area).
+    const description = questData.description;
+    console.log("description: "+description)
+
+    const student = Meteor.user().profile.name;
+    console.log("Student: "+student);
+
+    const newQuest = { questname, maxExp, requestedExp, gold, duedate, description, student };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newQuest reflects what will be inserted.
-    QuestData.getSchema().clean(updatedQuestData);
+    QuestData.getSchema().clean(newQuest);
     // Determine validity.
-    instance.context.validate(updatedQuestData);
-    console.log('have we gotten this far? ----- '+instance.context.validate(updatedQuestData));
+    instance.context.validate(newQuest);
+    console.log('have we gotten this far? ----- '+instance.context.validate(newQuest));
     if (instance.context.isValid()) {
-      const id = QuestData._collection.update(FlowRouter.getParam('_id'), { $set: updatedQuestData });
+      console.log('submitting quest...')
+      const id = QuestData._collection.insert(newQuest);
+      //const id = QuestData._collection.update(FlowRouter.getParam('_id'), { $set: updatedQuestData });
       instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();
@@ -76,4 +92,3 @@ Template.Edit_Quest_Page.events({
     }
   },
 });
-
