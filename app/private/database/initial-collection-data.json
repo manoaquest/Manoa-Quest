@@ -29,12 +29,7 @@
           "lastName": "Wilson",
 
           "username": "kirk6",
-<<<<<<< HEAD
           "avatarName": "Kerk",
-=======
-          "avatarName": "Krek",
-
->>>>>>> origin/issue-18
           "picture": "/images/whitemage.jpg",
           "gold": 30,
           "experience": 100,
