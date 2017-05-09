@@ -18,5 +18,5 @@ import './landing-page.js';
 import './submit-quest-page.html';
 import './submit-quest-page.js';
 
-import './teacher-page.html';
-import './teacher-page.js';
+import './leaderboard-page.html';
+import './leaderboard-page.js';

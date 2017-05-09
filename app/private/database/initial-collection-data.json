@@ -12,7 +12,7 @@
           "picture": "/images/whitemage.jpg",
           "gold": 300,
           "experience": 100000,
-		  "role": "student"
+		      "role": "student"
         },
         {
           "firstName": "Kirk",
@@ -22,16 +22,46 @@
           "picture": "/images/whitemage.jpg",
           "gold": 30,
           "experience": 100,
-		  "role": "prof"
+		      "role": "prof"
         },
         {
           "firstName": "Kirk",
           "lastName": "Wilson",
-          "username": "zzzz",
-          "avatarName": "Kerk",
+          "username": "amuro",
+          "avatarName": "Amuro Ray",
           "picture": "/images/whitemage.jpg",
           "gold": 30,
-          "experience": 100,
+          "experience": 3150,
+          "role": "student"
+        },
+        {
+          "firstName": "Kirk",
+          "lastName": "Wilson",
+          "username": "char",
+          "avatarName": "Char Aznable",
+          "picture": "/images/whitemage.jpg",
+          "gold": 30,
+          "experience": 3149,
+          "role": "student"
+        },
+        {
+          "firstName": "Kirk",
+          "lastName": "Wilson",
+          "username": "teviro",
+          "avatarName": "Teviro",
+          "picture": "/images/whitemage.jpg",
+          "gold": 30,
+          "experience": 7908534,
+          "role": "student"
+        },
+        {
+          "firstName": "Kirk",
+          "lastName": "Wilson",
+          "username": "ahnura",
+          "avatarName": "Ahnura",
+          "picture": "/images/whitemage.jpg",
+          "gold": 30,
+          "experience": 7908534,
           "role": "student"
         }
       ]
