@@ -36,13 +36,6 @@ FlowRouter.route('/edit-quest/:_id', {
 
 // Profile Routes
 
-FlowRouter.route('/student-home-page', {
-  name: 'Student_Home_Page',
-  action() {
-    BlazeLayout.render('App_Body', { main: 'Student_Home_Page' });
-  },
-});
-
 function addUserBodyClass() {
   $('body').addClass('user-layout-body');
 }
