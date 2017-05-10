@@ -57,7 +57,6 @@ Template.Submit_Quest_Page.events({
 
     const requestedExp = parseInt(event.target.RequestedEXP.value, 10);
     // console.log("requestedExp: "+requestedExp)
-
     // Get resubmissions (text area).
     const gold = parseInt(questData.gold, 10);
     // console.log("gold: "+gold)
@@ -71,7 +70,8 @@ Template.Submit_Quest_Page.events({
     const student = Meteor.user().profile.name;
     // console.log("Student: "+student);
 
-    const newQuest = { questname, maxExp, requestedExp, gold, duedate, description, student };
+    const earnedExp = 0;
+    const newQuest = { questname, maxExp, requestedExp, earnedExp, gold, duedate, description, student };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newQuest reflects what will be inserted.
