@@ -50,6 +50,10 @@ Template.Student_Profile.helpers({
   questList() {
     return QuestData._collection.find({ requestedExp: 0 });
   },
+  completedQuestList() {
+    return QuestData._collection.find({ student: FlowRouter.getParam('username'),
+      earnedExp: { $gt: 0 } });
+  },
 });
 
 

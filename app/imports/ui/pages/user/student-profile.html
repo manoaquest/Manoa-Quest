@@ -57,6 +57,7 @@
         <p>Profile data successfully updated.</p>
       </div>
       {{/if}}
+
       <h1>Current Quests</h1>
       <table class="ui celled table">
         <thead>
@@ -66,7 +67,7 @@
           <th>Gold Reward</th>
           <th>Due Date</th>
           <th>Description</th>
-          <th>Edit</th>
+          <th>Submit Quest</th>
         </tr>
         </thead>
         <tbody>
@@ -77,7 +78,7 @@
           <td>{{quest.gold}}</td>
           <td>{{quest.duedate}}</td>
           <td>{{quest.description}}</td>
-          <td><a href="{{pathFor 'Submit_Quest_Page' _id=quest._id}}">Edit</a></td>
+          <td><div class="ui button"><a href="{{pathFor 'Submit_Quest_Page' _id=quest._id}}">Submit Quest</a></div></td>
           <!--<td><a href="{{pathFor 'Edit_Contact_Page' _id=contact._id}}">Edit</a></td>-->
         </tr>
         {{/each}}
@@ -86,103 +87,28 @@
     </form>
     <!--form-->
 
-    <table class="ui compact celled definition table">
+    <h1>Completed Quests</h1>
+    <table class="ui celled table">
       <thead>
       <tr>
         <th>Quest Name</th>
         <th>Max Experience</th>
-        <th>Due Date</th>
-        <th>Description</th>
+        <th>Requested Experience</th>
+        <th>Experience Awarded</th>
       </tr>
       </thead>
       <tbody>
+      {{#each quest in completedQuestList}}
       <tr>
-        <td>E42: Digits Part 1</td>
-        <td>10 EXP</td>
-        <td>March 8, 2017</td>
-        <td>For this experience, you will start designing a simple Meteor application called Digits. This part will
-          have you create a mockup of the home page.
-        </td>
+        <td>{{quest.questname}}</td>
+        <td>{{quest.maxExp}}</td>
+        <td>{{quest.requestedExp}}</td>
+        <td>{{quest.earnedExp}}</td>
       </tr>
-      <tr>
-        <td>E42: Digits Part 2</td>
-        <td>10 EXP</td>
-        <td>March 9, 2017</td>
-        <td>For this experience, you will start designing a simple Meteor application called Digits. This part will
-          have you create a mockup of the add contacts and edit contacts page.
-        </td>
-      </tr>
-      <tr>
-        <td>E42: Digits Part 3</td>
-        <td>20 EXP</td>
-        <td>March 11, 2017</td>
-        <td>For this experience, you will start designing a simple Meteor application called Digits. This part will
-          have you connect your pages together.
-        </td>
-      </tr>
-      <tr>
-        <td>E42: Digits Part 4</td>
-        <td>30 EXP</td>
-        <td>March 13, 2017</td>
-        <td>For this experience, you will start designing a simple Meteor application called Digits. This part will
-          have you add functionality to your add contacts page. You will also be modifying it to perform validation
-          on
-          the user inputs.
-        </td>
-      </tr>
-      <tr>
-        <td>E42: Digits Part 5</td>
-        <td>20 EXP</td>
-        <td>March 15, 2017</td>
-        <td>For this experience, you will start designing a simple Meteor application called Digits. This part will
-          have you add functionality to your edit contacts page. You will also be modifying it to perform validation
-          on the user inputs.
-        </td>
-      </tr>
-      <tr>
-        <td>E42: Digits Part 6</td>
-        <td>10 EXP</td>
-        <td>March 15, 2017</td>
-        <td>For this experience, you will start designing a simple Meteor application called Digits. This part will
-          have you clean up the project by remove the template files.
-        </td>
-      </tr>
+      {{/each}}
       </tbody>
     </table>
-    <h1>Completed Quests</h1>
-    <table class="ui compact celled definition table">
-      <thead>
-      <tr>
-        <th>Quest Name</th>
-        <th>Experience Earned</th>
-        <th>Due Date</th>
-        <th>Description</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>E38: Meteor Hello World</td>
-        <td>19 EXP</td>
-        <td>February 25, 2017</td>
-        <td>You will be creating a basic application to explore the workflow of creating and making a Meteor
-          application.
-        </td>
-      </tr>
-      <tr>
-        <td>E39: Meteor in 50 Minutes</td>
-        <td>30 EXP</td>
-        <td>February 26, 2017</td>
-        <td>More practice for creating a Meteor application.
-        </td>
-      </tr>
-      <tr>
-        <td>E40: Meteor Blaze Tutorial</td>
-        <td>20 EXP</td>
-        <td>February 27, 2017</td>
-        <td>You will be creating a basic application called "Blaze" following a tutorial.</td>
-      </tr>
-      </tbody>
-    </table>
+
   </div>
   <!--ui container-->
   {{/if}}
