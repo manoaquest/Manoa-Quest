@@ -1,10 +1,10 @@
 <template name="Edit_Quest_Page">
 
   {{#if Template.subscriptionsReady}}
-  <div style="margin-top: 20px" class="ui container">
+  <div style="margin-top: 20px" class="ui-container">
 
     <form class="ui form quest-data-form {{ successClass }} {{ errorClass }}">
-      <h4 class="ui dividing header">Edit Student Data</h4>
+      <div class="avatar-header"><h1>Edit Student Data</h1></div>
 
       
       {{> Text_Form_Control label="Name" required=true value=(questDataField 'questname') errorMessage=(fieldError "quest name")}}
