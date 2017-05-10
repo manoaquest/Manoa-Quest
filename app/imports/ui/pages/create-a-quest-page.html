@@ -3,10 +3,10 @@
   {{#if Template.subscriptionsReady}}
 
 
-  <div style="margin-top: 20px" class="ui container">
+  <div style="margin-top: 20px" class="ui-container">
 
     <form class="ui form quest-data-form  {{ successClass }} {{ errorClass }}">
-      <h4 class="ui dividing header">Quest Data</h4>
+      <div class="avatar-header"><h1>Quest Data</h1></div>
 
       {{> Text_Form_Control label="Name" required=true errorMessage=(fieldError "quest name")}}
       {{> Text_Form_Control label="Exp" required=true errorMessage=(fieldError "exp")}}
