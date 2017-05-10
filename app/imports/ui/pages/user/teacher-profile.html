@@ -3,11 +3,14 @@
   {{#if Template.subscriptionsReady}}
   <!--Really ugly but can't get CSS to work any other way-->
   <div class="ui container"
-       style="background-image: url('/images/parchmentbg3.png'); padding: 10px 50px 10px 50px; background-size: 100%">
+       style="background-image: url('/images/parchmentbg3.png'); padding: 10px 50px 25px 50px; background-size: 100%">
 
-    <div class="ui small green button">
-      <div class="center aligned header form-head create-quest">Create
-        Quest</div>
+    <div class="ui container" style="padding-top: 25px;">
+      <div class="ui small fluid green button">
+        <div class="center aligned header form-head create-quest">Create
+          Quest
+        </div>
+      </div>
     </div>
 
     <h3>Quests to Approve</h3>
@@ -20,6 +23,8 @@
         <th>Possible EXP</th>
         <th>Due</th>
         <th>Description</th>
+        <th>Requested Experience</th>
+        <th>Approve Quest?</th>
       </tr>
       </thead>
 
@@ -31,7 +36,9 @@
         <td>{{duedate}}</td>
         <td>{{student}}</td>
         <td>{{requestedExp}}</td>
-        <td class="approve-quest">Approve</td>
+        <td class="approve-quest">
+          <div class="ui green button">Approve</div>
+        </td>
 
         <!--<td><a href="{{pathFor 'Edit_Contact_Page' _id=contact._id}}">Edit</a></td>-->
       </tr>
