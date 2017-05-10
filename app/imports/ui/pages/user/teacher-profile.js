@@ -124,8 +124,12 @@ Template.Teacher_Profile.events({
     const description = this.description;
     // console.log("description: "+description)
 
-    const student = this.name;
-    // console.log("Student: "+student);
+    const student = this.student;
+
+    // updating student profiles
+    const docID = Profiles.findDoc(student)._id;
+    const docIDstudent = Profiles.findDoc(student);
+    Profiles.update(docID, { $set: { experience: docIDstudent.experience + requestedExp } });
 
     const updatedQuestData = { questname, maxExp, requestedExp, earnedExp, gold, duedate, description, student };
     // Clear out any old validation errors.
